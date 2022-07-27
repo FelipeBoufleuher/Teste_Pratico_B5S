@@ -133,7 +133,7 @@ public class Functions {
     }
 
     /*
-     * QUESTÃO DO CARTÃO DE CRÉDITO A BAIXO
+     * QUESTÃO DO CARTÃO DE CRÉDITO ABAIXO
      */
 
     public boolean luhn(String cardNumber) {
@@ -166,7 +166,7 @@ public class Functions {
     }
 
     /*
-     * QUESTÃO DO CARTÃO DE CRÉDITO A CIMA
+     * QUESTÃO DO CARTÃO DE CRÉDITO ACIMA
      */
 
     public int[] atmMachines(int value, int[] bankNotes) { // o algoritmo vai guardar o resultado da divisão
