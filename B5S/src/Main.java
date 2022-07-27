@@ -28,7 +28,9 @@ public class Main {
         // System.out.println(f.firstNonRepeatedValue(vetor));
         // f.arraySort(vetor);
         // for(int i = 0; i < tamanhoDoVetor; i++) System.out.println(vetor[i]);
-        f.atmMachines(1323, vetor);
+        // f.atmMachines(1323, vetor);
+        //f.fileHandler();
+        // System.out.println(f.creditCardNumber());
         // scanner.close();
     }
 }

@@ -1,17 +1,10 @@
 package functions;
 
-import java.io.BufferedInputStream;
-import java.io.BufferedOutputStream;
 import java.io.BufferedReader;
-import java.io.DataInputStream;
-import java.io.DataOutputStream;
 import java.io.File;
-import java.io.FileInputStream;
 import java.io.FileNotFoundException;
-import java.io.FileOutputStream;
 import java.io.FileReader;
 import java.io.IOException;
-import java.io.PrintWriter;
 
 public class Functions {
 
@@ -107,49 +100,74 @@ public class Functions {
         return -1;
     }
 
-    public void fileHandler() {
+    public int[] fileHandler() { // Esse algoritmo funcionará trocando 1 e 0 por espaços vazios, logo depois
+                                 // contando os caracteres da linha
+        int totalLines[] = new int[2]; // se as condições requeridas forem cumpridas, os contadores aumentam.
         try {
-            File file = new File("/B5S/data.dat");
+            File file = new File("B5S\\src\\data.dat");
             FileReader reader = new FileReader(file);
             BufferedReader br = new BufferedReader(reader);
 
-            while(br.ready()) {
-                String strSem0 = br.readLine();
-                String strSem1 = br.readLine();
+            while (br.ready()) {
+                String str0 = br.readLine();
+                String str1 = str0;
 
-                strSem0 = strSem0.replace("0", "");
-                strSem1 = strSem1.replace("1", "");
+                str0 = str0.replace("1", "");
+                str1 = str1.replace("0", "");
+
+                if (str1.chars().filter(ch -> ch != ' ').count() % 2 == 0)
+                    totalLines[1]++;
+                if (str0.chars().filter(ch -> ch != ' ').count() % 3 == 0)
+                    totalLines[0]++;
+
             }
-           
+            System.out.println("Quantidade de 0 certo: " + totalLines[0]);
+            System.out.println("Quantidade de 1 certo: " + totalLines[1]);
+
         } catch (FileNotFoundException e) {
             e.printStackTrace();
         } catch (IOException e) {
-            // TODO Auto-generated catch block
             e.printStackTrace();
         }
-
+        return totalLines;
     }
 
-    public void creditCardNumber() { // 543210******1234 ~= 5432100000000000
-        Long creditCardNumber = 5432100000000000L;
+    /*
+     * QUESTÃO DO CARTÃO DE CRÉDITO A BAIXO
+     */
+
+    public boolean luhn(String cardNumber) {
+        int sum = 0;
+        boolean alternate = false;
+        for (int i = cardNumber.length() - 1; i >= 0; i--) { // começa do final pois o ultimo algoritmo do número nunca pode ter peso 2 no algoritmo de luhn
+            int n = Integer.parseInt(cardNumber.substring(i, i + 1));
+            if (alternate) {
+                n *= 2;
+                if (n > 9) {
+                    n = n - 9;
+                }
+            } sum += n;
+            alternate = !alternate;
+        } return (sum % 10 == 0);
+    }
+
+    public long creditCardNumber() { // 543210******1234 ~= 5432100000001234
+        Long cardNumber = 5432100000001234L;
         long multiple = 123457;
-        Long aux = creditCardNumber + (creditCardNumber % multiple); // = 5432100000013600, menor multiplo de 123457 no
-                                                                     // intervalo
-        String aux2 = aux.toString();
-        System.out.println(aux2.substring(12, 16));
 
-        do { // objetivo: calcular todos os multiplos, a´te um terminar em 1234, falhou
-             // for(int i = aux2.length() - 1; i >= 0; i--) {
-            System.out.println(aux2);
-            aux2 = aux.toString();
-            aux += multiple;
-            // }
-        } while (aux2.substring(12, 16) != "1234");
-        System.out.println(aux);
-        // a resposta é uma interseção entre o algoritmo de luhn e os multiplos de
-        // 123457
-
+        while(cardNumber < 5432109999991234L) {
+            int count = 10000; // o contador aumenta de 10000 em 10000 as variáveis começam após 10^4 e os digitos de menor magnitude não podem ser alterados
+            cardNumber += count;
+            if (cardNumber % multiple == 0 && luhn(cardNumber.toString()))    
+            return cardNumber;
+        }
+        System.out.println("Nenhuma solução encontrada.");
+        return 0;
     }
+
+    /*
+     * QUESTÃO DO CARTÃO DE CRÉDITO A CIMA
+     */
 
     public int[] atmMachines(int value, int[] bankNotes) { // o algoritmo vai guardar o resultado da divisão
         int totalNotes[] = new int[bankNotes.length]; // do valor pelo array de notas e gaurdar no totalNotes
