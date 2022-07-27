@@ -45,6 +45,47 @@ public class Functions {
         return strb.reverse().toString();
     }
 
+    public String replaceWovels(String str) {
+        str = str.replace('a', '?'); // Poderia fazer o mesmo para vogais maiúsculas ou com acento
+        str = str.replace('e', '?');
+        str = str.replace('i', '?');
+        str = str.replace('o', '?');
+        str = str.replace('u', '?');
+        return str;
+    }
+
+    public int firstNonRepeatedValue(int[] x) {
+        int j;
+        for(int i = 0; i < x.length; i++) {
+            for(j = i + 1; j < x.length; j++) {
+                System.out.println(i + "  " + j);
+                if(x[i] == x[j]) return x[i];
+            }
+        } System.out.println("Não há valores repetidos");
+        return -1;
+    }
+
+    public void creditCardNumber() { // 543210******1234 ~= 5432100000000000
+        Long creditCardNumber = 5432100000000000L;
+        long multiple = 123457;
+        Long aux = creditCardNumber + (creditCardNumber % multiple); // = 5432100000013600
+        String aux2 = aux.toString();
+        System.out.println(aux2.substring(12, 16));
+
+        do {
+            // for(int i = aux2.length() - 1; i >= 0; i--) {
+                System.out.println(aux2);
+                aux2 = aux.toString();
+                aux += multiple;
+            // }
+        } while(aux2.substring(12, 16) != "1234");
+         System.out.println(aux);
+        
+        
+        
+
+    }
+
     
 
 }
