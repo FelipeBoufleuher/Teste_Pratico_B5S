@@ -1,0 +1,14 @@
+Interfaces: Conceito de POO que serve para definir o que uma ou mais classes devem fazer,
+porém não limita a forma como o fazem. Em outros termos, uma interface é como um esboço que diferentes classes usam.
+Não podem ser instanciadas, apenas implementadas pelas classes.
+
+Instancias: A instância de uma classe é o espaço na memória que usamos para manipular os 
+objeto que tem seu comportamento, atributos, métodos e criação feitos e moldados a partir da classe.
+
+Objetos: Podemos dizer que objetos são estruturas criadas a partir de um molde (que seria a classe) e existem no nosso 
+programa utilizando instâncias. Ambos são intimamente ligados, mas tem suas diferenças, uma vez que quando os obejtos
+são persistidos no banco de dados, suas instâncias deixam de existir na memória.
+
+Classes: Finalmente, as classes são os moldes dos objetos, as regras que delimitam sua forma e comportamento. Vamos usar como 
+exemplo um cubo. Um cubo deve ser uma forma geométrica com 6 faces e todos os ângulos retos correto? Pois bem, analisando a partir
+de da orientação a objetos, as ideias por trás da forma do cubo são a classe, e o cubo em si, o objeto.

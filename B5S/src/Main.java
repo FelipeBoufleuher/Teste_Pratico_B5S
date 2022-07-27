@@ -4,13 +4,14 @@ import functions.Functions;
 
 public class Main {
     public static void main(String[] args) throws Exception {
-        final int tamanhoDoVetor = 4;
+        final int tamanhoDoVetor = 5;
         int vetor[] = new int[tamanhoDoVetor];
         String palavra = "Felipao";
-        vetor[0] = 6;
+        vetor[0] = 2;
         vetor[1] = 5;
-        vetor[2] = 11;
-        vetor[3] = 11;
+        vetor[2] = 10;
+        vetor[3] = 100;
+        vetor[4] = 200;
 
         Scanner scanner = new Scanner(System.in);
         Functions f = new Functions();
@@ -25,7 +26,9 @@ public class Main {
         // System.out.println(f.reverseString(palavra));
         // System.out.println(f.replaceWovels(palavra));
         // System.out.println(f.firstNonRepeatedValue(vetor));
-        f.creditCardNumber();
+        // f.arraySort(vetor);
+        // for(int i = 0; i < tamanhoDoVetor; i++) System.out.println(vetor[i]);
+        f.atmMachines(1323, vetor);
         // scanner.close();
     }
 }
